@@ -1,6 +1,6 @@
 from typing import Any
 
-from pydantic import BaseModel, Field, root_validator
+from pydantic import BaseModel, Field, model_validator
 
 from .graph import GraphPayload
 
@@ -8,7 +8,7 @@ from .graph import GraphPayload
 class QueryRequest(BaseModel):
     question: str = Field(..., min_length=1, description="Natural language ERP question")
 
-    @root_validator(pre=True)
+    @model_validator(mode="before")
     @classmethod
     def normalize_input(cls, data: Any) -> Any:
         if isinstance(data, dict):
