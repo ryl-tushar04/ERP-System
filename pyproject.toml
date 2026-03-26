@@ -5,19 +5,20 @@ build-backend = "hatchling.build"
 [project]
 name = "erp-system-backend"
 version = "0.1.0"
-description = "Modular FastAPI backend scaffold with PostgreSQL and AI integration."
+description = "Graph-based ERP workflow debugging and query system."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
-  "alembic",
-  "fastapi",
-  "httpx",
-  "openai",
-  "pydantic<2",
-  "psycopg2-binary",
-  "psycopg[binary]",
-  "sqlalchemy",
-  "uvicorn[standard]",
+  "alembic>=1.14,<2",
+  "fastapi>=0.115,<1",
+  "httpx>=0.28,<1",
+  "openai>=1.58,<2",
+  "pydantic>=2.10,<3",
+  "pydantic-settings>=2.6,<3",
+  "psycopg2-binary>=2.9,<3",
+  "psycopg[binary]>=3.2,<4",
+  "sqlalchemy>=2.0,<3",
+  "uvicorn[standard]>=0.34,<1",
 ]
 
 [project.optional-dependencies]
@@ -32,4 +33,4 @@ packages = ["backend"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py310"
+target-version = "py311"
