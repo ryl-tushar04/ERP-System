@@ -1,9 +1,16 @@
 from functools import lru_cache
 
-from pydantic import BaseSettings, Field
+from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
+
     app_name: str = "ERP System API"
     app_version: str = "0.1.0"
     api_v1_prefix: str = "/api/v1"
@@ -18,18 +25,15 @@ class Settings(BaseSettings):
     postgres_pool_min_size: int = 1
     postgres_pool_max_size: int = 10
 
-    llm_provider: str = Field(default="groq", env="LLM_PROVIDER")
-    llm_model: str = Field(default="openai/gpt-oss-20b", env="LLM_MODEL")
-    openai_api_key: str | None = Field(default=None, env="OPENAI_API_KEY")
-    openai_base_url: str | None = Field(default=None, env="OPENAI_BASE_URL")
-    groq_api_key: str | None = Field(default=None, env="GROQ_API_KEY")
-    groq_base_url: str = Field(default="https://api.groq.com/openai/v1", env="GROQ_BASE_URL")
-
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
-        extra = "ignore"
-        allow_population_by_field_name = True
+    llm_provider: str = Field(default="groq", validation_alias="LLM_PROVIDER")
+    llm_model: str = Field(default="openai/gpt-oss-20b", validation_alias="LLM_MODEL")
+    openai_api_key: str | None = Field(default=None, validation_alias="OPENAI_API_KEY")
+    openai_base_url: str | None = Field(default=None, validation_alias="OPENAI_BASE_URL")
+    groq_api_key: str | None = Field(default=None, validation_alias="GROQ_API_KEY")
+    groq_base_url: str = Field(
+        default="https://api.groq.com/openai/v1",
+        validation_alias="GROQ_BASE_URL",
+    )
 
     @property
     def database_url(self) -> str:
