@@ -1,0 +1,228 @@
+{
+  "nodes": [
+    {
+      "id": "customer-c-100",
+      "type": "customer",
+      "label": "Acme Retail",
+      "metadata": {
+        "customer_id": "C-100",
+        "segment": "Enterprise"
+      }
+    },
+    {
+      "id": "customer-c-200",
+      "type": "customer",
+      "label": "Northwind Stores",
+      "metadata": {
+        "customer_id": "C-200",
+        "segment": "Mid-market"
+      }
+    },
+    {
+      "id": "address-a-100",
+      "type": "address",
+      "label": "Mumbai DC",
+      "metadata": {
+        "city": "Mumbai",
+        "country": "India"
+      }
+    },
+    {
+      "id": "address-a-200",
+      "type": "address",
+      "label": "Bengaluru Hub",
+      "metadata": {
+        "city": "Bengaluru",
+        "country": "India"
+      }
+    },
+    {
+      "id": "product-p-100",
+      "type": "product",
+      "label": "Industrial Pump",
+      "metadata": {
+        "product_id": "P-100",
+        "category": "Equipment"
+      }
+    },
+    {
+      "id": "product-p-200",
+      "type": "product",
+      "label": "Control Valve",
+      "metadata": {
+        "product_id": "P-200",
+        "category": "Components"
+      }
+    },
+    {
+      "id": "product-p-300",
+      "type": "product",
+      "label": "Pressure Sensor",
+      "metadata": {
+        "product_id": "P-300",
+        "category": "Electronics"
+      }
+    },
+    {
+      "id": "order-so-1001",
+      "type": "order",
+      "label": "Sales Order SO-1001",
+      "metadata": {
+        "order_id": "SO-1001",
+        "status": "billed",
+        "order_date": "2026-03-18"
+      }
+    },
+    {
+      "id": "order-so-1002",
+      "type": "order",
+      "label": "Sales Order SO-1002",
+      "metadata": {
+        "order_id": "SO-1002",
+        "status": "delivered",
+        "order_date": "2026-03-19"
+      }
+    },
+    {
+      "id": "order-so-1003",
+      "type": "order",
+      "label": "Sales Order SO-1003",
+      "metadata": {
+        "order_id": "SO-1003",
+        "status": "processing",
+        "order_date": "2026-03-20"
+      }
+    },
+    {
+      "id": "delivery-del-501",
+      "type": "delivery",
+      "label": "Delivery DEL-501",
+      "metadata": {
+        "delivery_id": "DEL-501",
+        "status": "completed"
+      }
+    },
+    {
+      "id": "delivery-del-502",
+      "type": "delivery",
+      "label": "Delivery DEL-502",
+      "metadata": {
+        "delivery_id": "DEL-502",
+        "status": "completed"
+      }
+    },
+    {
+      "id": "invoice-inv-9001",
+      "type": "invoice",
+      "label": "Invoice INV-9001",
+      "metadata": {
+        "invoice_id": "INV-9001",
+        "status": "paid",
+        "amount": 125000
+      }
+    },
+    {
+      "id": "payment-pay-7001",
+      "type": "payment",
+      "label": "Payment PAY-7001",
+      "metadata": {
+        "payment_id": "PAY-7001",
+        "status": "received",
+        "amount": 125000
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-customer-order-1",
+      "source": "customer-c-100",
+      "target": "order-so-1001",
+      "type": "placed",
+      "label": "placed"
+    },
+    {
+      "id": "edge-customer-order-2",
+      "source": "customer-c-100",
+      "target": "order-so-1002",
+      "type": "placed",
+      "label": "placed"
+    },
+    {
+      "id": "edge-customer-order-3",
+      "source": "customer-c-200",
+      "target": "order-so-1003",
+      "type": "placed",
+      "label": "placed"
+    },
+    {
+      "id": "edge-customer-address-1",
+      "source": "customer-c-100",
+      "target": "address-a-100",
+      "type": "located_at",
+      "label": "located at"
+    },
+    {
+      "id": "edge-customer-address-2",
+      "source": "customer-c-200",
+      "target": "address-a-200",
+      "type": "located_at",
+      "label": "located at"
+    },
+    {
+      "id": "edge-order-product-1",
+      "source": "order-so-1001",
+      "target": "product-p-100",
+      "type": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-order-product-2",
+      "source": "order-so-1001",
+      "target": "product-p-200",
+      "type": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-order-product-3",
+      "source": "order-so-1002",
+      "target": "product-p-100",
+      "type": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-order-product-4",
+      "source": "order-so-1003",
+      "target": "product-p-300",
+      "type": "contains",
+      "label": "contains"
+    },
+    {
+      "id": "edge-order-delivery-1",
+      "source": "order-so-1001",
+      "target": "delivery-del-501",
+      "type": "fulfilled_by",
+      "label": "fulfilled by"
+    },
+    {
+      "id": "edge-order-delivery-2",
+      "source": "order-so-1002",
+      "target": "delivery-del-502",
+      "type": "fulfilled_by",
+      "label": "fulfilled by"
+    },
+    {
+      "id": "edge-delivery-invoice-1",
+      "source": "delivery-del-501",
+      "target": "invoice-inv-9001",
+      "type": "billed_by",
+      "label": "billed by"
+    },
+    {
+      "id": "edge-invoice-payment-1",
+      "source": "invoice-inv-9001",
+      "target": "payment-pay-7001",
+      "type": "settled_by",
+      "label": "settled by"
+    }
+  ]
+}
