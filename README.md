@@ -4,6 +4,8 @@ This project is a graph-based ERP debugging and exploration system built for for
 
 The system is designed around one principle: constrained, inspectable intelligence. The model is never treated as an authority on its own. It operates inside a bounded pipeline with domain guardrails, explicit graph structure, and visible outputs.
 
+Deployed Link: https://erp-system-ryl-tushar04s-projects.vercel.app/
+
 ## What The System Does
 
 - Builds and serves a context graph of ERP entities
