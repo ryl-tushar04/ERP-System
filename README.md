@@ -1,6 +1,6 @@
 # ERP Workflow Debugging System
 
-This project is a graph-based ERP workflow exploration and debugging system built for the Forward Deployed Engineer assignment. It ingests fragmented SAP order-to-cash data, models the business flow as a graph, exposes a natural-language query interface, and returns grounded answers backed by graph traversal and optional SQL generation.
+This project is a graph-based ERP workflow exploration and debugging system built as a personal project. It ingests fragmented SAP order-to-cash data, models the business flow as a graph, exposes a natural-language query interface, and returns grounded answers backed by graph traversal and optional SQL generation.
 
 The system is designed around constrained intelligence rather than autonomous intelligence. The model is treated as a bounded translation layer inside a controlled pipeline with explicit graph structure, domain guardrails, and inspectable outputs.
 
